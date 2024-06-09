@@ -54,6 +54,5 @@ exports.login_user_post = passport.authenticate("local", {
 });
 
 exports.get_home = asyncHandler(async (req, res, next) => {
-  //
-  res.render("home");
+  res.render("home", { user: req.user });
 });

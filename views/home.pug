@@ -1,4 +1,13 @@
 extends layout
 
 block content
-  div If you see this you are member!
+  .container
+    div
+      .contentTitle Welcome !{user.full_name}
+      div Add message
+    .messagesContainer 
+      div.singleMessage
+        i.fas.fa-user-circle
+        div
+          .userName Anonymous
+          .userMessage Message  
