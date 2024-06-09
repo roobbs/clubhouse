@@ -2,6 +2,7 @@ const User = require("../models/user");
 const { body, validationResult } = require("express-validator");
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
+const passport = require("passport");
 
 exports.signup_user_post = [
   body("username", "Username must not be empty").trim().escape(),
@@ -47,4 +48,7 @@ exports.signup_user_post = [
   }),
 ];
 
-exports.login_user_post = [];
+exports.login_user_post = passport.authenticate("local", {
+  successRedirect: "/home",
+  failureRedirect: "/log-in",
+});
