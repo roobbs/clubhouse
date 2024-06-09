@@ -37,7 +37,7 @@ exports.signup_user_post = [
       });
 
       await user.save();
-      res.render("log-in");
+      res.redirect("/log-in");
     } catch (err) {
       console.log(err);
       res.render("sign-up", {
@@ -46,3 +46,5 @@ exports.signup_user_post = [
     }
   }),
 ];
+
+exports.login_user_post = [];

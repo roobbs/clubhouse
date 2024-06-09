@@ -2,4 +2,18 @@ extends layout
 
 block content
   .formContainer
-    .title Sign Up
+    .title Log In
+
+    if errors
+      ul
+        for error in errors
+          li!= error.msg
+
+    form(method="POST")  
+      div.form-group
+        label(for='username') Username:
+        input#username.form-control(type='text', placeholder='Username' name='username' required )
+      div.form-group
+        label(for='password') Password:
+        input#password.form-control(type='password', placeholder='Password' name='password' required )
+      button.btn.btn-primary(type='submit') Submit
