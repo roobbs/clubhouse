@@ -3,7 +3,12 @@ extends layout
 block content
   .formContainer
     .title Sign Up
-    form(action="POST")  
+    if errors
+      ul
+        for error in errors
+          li!= error.msg
+
+    form(method="POST")  
       div.form-group
         label(for='username') Username:
         input#username.form-control(type='text', placeholder='Username' name='username' required )
@@ -16,6 +21,9 @@ block content
       div.form-group
         label(for='password') Password:
         input#password.form-control(type='password', placeholder='Password' name='password' required )
+      div.form-group
+        label(for='confirmpassword') Confirm password:
+        input#confirmpassword.form-control(type='password', placeholder='Password Confirm' name='confirmpassword' required )
       button.btn.btn-primary(type='submit') Submit
 
 
