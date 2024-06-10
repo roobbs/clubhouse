@@ -5,12 +5,13 @@ block content
     .infoContainer
       .contentTitle Welcome !{user.full_name}
       a.button(href="/message") Add message
-      if user.membership==="member"
-        a.button(href="/password") Become admin
-      else 
+      if user.admin
         div You are an admin member.
+      else 
+        a.button(href="/upgrade-membership") Become admin
       block password
     .messagesContainer 
+      div Messages:
       if messages 
         each message in messages 
           div.singleMessage

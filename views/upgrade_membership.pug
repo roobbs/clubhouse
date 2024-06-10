@@ -1,0 +1,10 @@
+extends home
+
+block password
+  div(style="font-size:1rem; padding-top:1rem") Please insert your admin password
+  if error 
+    div #{error}
+  form(method="POST")
+    div.form-group
+      label(for='adminpassword') Pasword:
+      input#adminpassword.form-control(type='text', placeholder='Password' name='adminpassword' required )

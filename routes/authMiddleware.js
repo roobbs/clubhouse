@@ -1,5 +1,8 @@
 module.exports.isMember = (req, res, next) => {
-  if (req.isAuthenticated() && req.user.membership === "member") {
+  if (
+    (req.isAuthenticated() && req.user.membership === "member") ||
+    (req.isAuthenticated() && req.user.admin)
+  ) {
     next();
   } else {
     res.status(401).render("error", {
@@ -10,7 +13,7 @@ module.exports.isMember = (req, res, next) => {
 };
 
 module.exports.isAdmin = (req, res, next) => {
-  if (req.isAuthenticated() && req.user.admin) {
+  if (req.isAuthenticated() && req.user.isAdmin) {
     next();
   } else {
     res.status(401).render("error", {

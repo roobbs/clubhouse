@@ -98,3 +98,54 @@ exports.create_message_post = [
     res.redirect("home");
   }),
 ];
+
+exports.upgrade_membership_get = asyncHandler(async (req, res, next) => {
+  const messages = await Message.find().sort({ timestamp: -1 }).exec();
+
+  res.render("upgrade_membership", {
+    user: req.user,
+    messages: messages,
+  });
+});
+
+exports.upgrade_membership_post = [
+  body("adminpassword")
+    .trim()
+    .custom((value) => {
+      if (value !== "1234") {
+        //
+        return false;
+      }
+      return true;
+    })
+    .withMessage("Password is not correct")
+    .escape(),
+
+  asyncHandler(async (req, res, next) => {
+    const error = validationResult(req);
+    const messages = await Message.find().sort({ timestamp: -1 }).exec();
+
+    if (!error.isEmpty()) {
+      res.render("upgrade_membership", {
+        errors: error,
+        messages: messages,
+        user: req.user,
+      });
+      return;
+    }
+
+    const user = new User({
+      _id: req.user._id,
+      username: req.user.username,
+      first_name: req.user.firstname,
+      last_name: req.user.lastname,
+      password: req.user.password,
+      membership: req.user.membership,
+      admin: true,
+    });
+
+    const updateUser = await User.findByIdAndUpdate(req.user._id, user);
+
+    res.redirect("home");
+  }),
+];

@@ -23,4 +23,14 @@ router.get("/message", isMember, user_controller.create_message_get);
 
 router.post("/message", isMember, user_controller.create_message_post);
 
+router.get(
+  "/upgrade-membership",
+  isMember,
+  user_controller.upgrade_membership_get
+);
+router.post(
+  "/upgrade-membership",
+  isMember,
+  user_controller.upgrade_membership_post
+);
 module.exports = router;
