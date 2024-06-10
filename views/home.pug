@@ -5,10 +5,21 @@ block content
     .infoContainer
       .contentTitle Welcome !{user.full_name}
       a.button(href="/message") Add message
-      a.button(href="/password") Become admin
+      if user.membership==="member"
+        a.button(href="/password") Become admin
+      else 
+        div You are an admin member.
+      block password
     .messagesContainer 
-      div.singleMessage
-        i.fas.fa-user-circle
-        div
-          .userName Anonymous
-          .userMessage Message  
+      if messages 
+        each message in messages 
+          div.singleMessage
+            i.fas.fa-user-circle
+            div
+              .userName #{message.title}
+              .userMessage #{message.text}
+              .userInfo #{message.owner.full_name}
+              .userInfo #{message.timestamp}
+
+      else 
+        div There are no messages to show

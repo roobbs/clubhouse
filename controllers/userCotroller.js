@@ -55,7 +55,9 @@ exports.login_user_post = passport.authenticate("local", {
 });
 
 exports.get_home = asyncHandler(async (req, res, next) => {
-  res.render("home", { user: req.user });
+  const messages = await Message.find({}).populate("owner").exec();
+
+  res.render("home", { user: req.user, messages: messages });
 });
 
 exports.create_message_get = asyncHandler(async (req, res, next) => {
