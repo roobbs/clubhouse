@@ -4,9 +4,7 @@ const user_controller = require("../controllers/userCotroller");
 const isMember = require("./authMiddleware").isMember;
 
 /* GET home page. */
-router.get("/", function (req, res, next) {
-  res.render("index", { title: "Express" });
-});
+router.get("/", user_controller.index_get);
 
 router.get("/sign-up", (req, res, next) => {
   res.render("sign-up", { title: "Express" });

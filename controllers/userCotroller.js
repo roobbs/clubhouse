@@ -5,6 +5,12 @@ const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 
+exports.index_get = asyncHandler(async (req, res, next) => {
+  const messages = await Message.find({}).sort({ timestamp: -1 }).exec();
+
+  res.render("index", { messages: messages });
+});
+
 exports.signup_user_post = [
   body("username", "Username must not be empty").trim().escape(),
   body("firstname", "First name must not be empty").trim().escape(),
@@ -55,7 +61,10 @@ exports.login_user_post = passport.authenticate("local", {
 });
 
 exports.get_home = asyncHandler(async (req, res, next) => {
-  const messages = await Message.find({}).populate("owner").exec();
+  const messages = await Message.find({})
+    .populate("owner")
+    .sort({ timestamp: -1 })
+    .exec();
 
   res.render("home", { user: req.user, messages: messages });
 });
@@ -86,6 +95,6 @@ exports.create_message_post = [
     });
     console.log(message);
     message.save();
-    res.render("home", { user: req.user });
+    res.redirect("home");
   }),
 ];
