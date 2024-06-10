@@ -146,7 +146,7 @@ exports.upgrade_membership_post = [
 
     const updateUser = await User.findByIdAndUpdate(req.user._id, user);
 
-    res.redirect("home");
+    res.redirect("/home");
   }),
 ];
 

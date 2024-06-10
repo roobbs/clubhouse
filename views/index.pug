@@ -8,14 +8,15 @@ block content
       a.button(href="/sign-up") Sign Up
       a.button(href="/log-in") Log In
     .messagesContainer  
+      div(style="font-weight:700") Messages:
       if messages 
         each message in messages 
-          div.singleMessage
+          div.singleMessage(style="padding-left:2rem")
             i.fas.fa-user-circle
+            .userName Anonymous
             div
-              .userName #{message.title}
-              .userMessage #{message.text}
-              .userInfo #{message.timestamp}
+              .messageTitle #{message.title}
+              .messageText #{message.text}
 
       else 
         div There are no messages to show 

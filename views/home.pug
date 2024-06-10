@@ -11,18 +11,18 @@ block content
       a.button(href="/message") Add message
       block password
     .messagesContainer 
-      div Messages:
+      div(style="font-weight:700") Messages:
       if messages 
         each message in messages 
           div.singleMessage
-            i.fas.fa-user-circle
             div
-              .userName #{message.title}
-              .userMessage #{message.text}
-              .userInfo #{message.owner.full_name}
-              .userInfo #{message.timestamp}
+              .messageTitle #{message.title}
+              .messageText #{message.text}
+              .messageDate #{message.timestamp}
+            div
+              .userName #{message.owner.full_name}
             if user.admin   
-              form(action=`/message/${message._id}`, method="POST")
-                button(type="submit") Delete
+              form.homeForm(action=`/message/${message._id}`, method="POST")
+                button.homeButton(type="submit") Delete
       else 
         div There are no messages to show

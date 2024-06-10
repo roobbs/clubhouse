@@ -56,25 +56,40 @@ a {
   justify-content: space-evenly;
   /* align-items: start; */
   gap: 1rem;
+  max-height: 60vh;
+  overflow-y: scroll;
+  scrollbar-color: rgb(125, 125, 255) rgb(255, 255, 255);
+  scrollbar-width: thin;
 }
 .singleMessage {
   display: flex;
+  justify-content: first baseline;
   gap: 2rem;
   align-items: center;
   padding: 1rem;
   transition: all 0.3s;
   border: 1px solid transparent;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #001087;
 }
 .singleMessage:hover {
   background-color: rgb(222, 222, 222);
   border-radius: 6px;
-  border: 1px solid black;
+  border: 1px solid #001087;
 }
 .userName {
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-.userMessage {
   font-size: 1rem;
+  font-weight: 600;
+}
+.messageTitle {
+  font-weight: 900;
+  font-family: monospace;
+  font-size: 1.3rem;
+  padding-bottom: 0.5rem;
+}
+.messageText {
+  font-size: 1rem;
+  padding-bottom: 1rem;
+}
+.messageDate {
+  font-weight: 700;
 }

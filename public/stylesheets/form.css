@@ -67,3 +67,20 @@ button:hover {
   background-color: rgba(41, 177, 255, 0.525);
   cursor: pointer;
 }
+
+.homeForm {
+  padding: 0;
+  /* align-self: flex-end; */
+  flex: 1;
+  border-color: transparent;
+  display: flex;
+}
+.homeButton {
+  border-color: #001087;
+  align-self: flex-end;
+  /* justify-self: self-end; */
+}
+.homeButton:hover {
+  background-color: #001087;
+  border-color: transparent;
+}
