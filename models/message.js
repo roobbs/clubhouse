@@ -10,7 +10,7 @@ const MessageSchema = new Schema({
 });
 
 MessageSchema.virtual("url").get(function () {
-  return `/catalog/category/${this._id}`;
+  return `/message/${this._id}`;
 });
 
 module.exports = mongoose.model("Message", MessageSchema);

@@ -149,3 +149,8 @@ exports.upgrade_membership_post = [
     res.redirect("home");
   }),
 ];
+
+exports.message_delete_post = asyncHandler(async (req, res, next) => {
+  await Message.findByIdAndDelete(req.params.id);
+  res.redirect("/home");
+});

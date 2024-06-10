@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 const user_controller = require("../controllers/userCotroller");
 const isMember = require("./authMiddleware").isMember;
+const isAdmin = require("./authMiddleware").isAdmin;
 
 /* GET home page. */
 router.get("/", user_controller.index_get);
@@ -33,4 +34,12 @@ router.post(
   isMember,
   user_controller.upgrade_membership_post
 );
+
+router.post(
+  "/message/:id",
+  isMember,
+  isAdmin,
+  user_controller.message_delete_post
+);
+
 module.exports = router;
