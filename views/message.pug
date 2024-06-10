@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  .formContainer
+    .title Add your message !{user.first_name}
+    form(method="POST")  
+        div.form-group
+          label(for='title') Title:
+          input#title.form-control(type='text', placeholder='Title' name='title' required )
+        div.form-group
+          label(for='message') Message:
+          input#message.form-control(type='text', placeholder='Text' name='message' required )
+        button.btn.btn-primary(type='submit') Submit

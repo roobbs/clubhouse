@@ -4,3 +4,8 @@
 .contentTitle {
   font-size: 2rem;
 }
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

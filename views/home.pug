@@ -2,9 +2,10 @@ extends layout
 
 block content
   .container
-    div
+    .infoContainer
       .contentTitle Welcome !{user.full_name}
-      div Add message
+      a.button(href="/message") Add message
+      a.button(href="/password") Become admin
     .messagesContainer 
       div.singleMessage
         i.fas.fa-user-circle
